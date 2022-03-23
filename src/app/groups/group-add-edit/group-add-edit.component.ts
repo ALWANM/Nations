@@ -84,6 +84,7 @@ export class GroupAddEditComponent implements OnInit {
     }
     else {
       this.groupToAdd.groupid = this.groupIdToEdit;
+      this.updateUsers(this.groupToAdd.users, this.groupToAdd);
       this.updateGroup(this.groupToAdd);
     }
   }
