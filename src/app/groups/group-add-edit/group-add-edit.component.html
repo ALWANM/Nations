@@ -1,0 +1,46 @@
+<mat-toolbar class="content" color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="primary" (click)="goGroups()">
+        <mat-icon color="primary">keyboard_arrow_left</mat-icon>
+        Back
+    </button>
+</mat-toolbar>
+
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px grid" >
+        <div fxFlex="100%">
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="groupname" name="groupname" required>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100%">
+            <ng-container *ngIf="(users$ | async) as users; else nousers">
+                <mat-form-field>
+                    <mat-label>Users</mat-label>
+                    <mat-select #select multiple formControlName="users">
+                        <mat-option *ngFor="let user of users" [value]="user" name="select">
+                            {{user.firstName}} {{user.lastName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-template #nousers>
+                <div class="loaing-container">
+                    <h3>Add group and come back to add user</h3>
+                </div>
+            </ng-template>
+
+        </div>
+        <div fxFlex="100%">
+            <button mat-stroked-button color="primary" type="submit" [disabled]="!groupForm.valid">
+                {{btnText}}
+            </button>
+        </div>
+    </div>
+</form>
+
+<ng-template #loading>
+    <div class="loaing-container">
+        <h3>findind users ....</h3>
+    </div>
+</ng-template>
