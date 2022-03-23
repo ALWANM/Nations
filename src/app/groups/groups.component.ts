@@ -66,7 +66,7 @@ export class GroupsComponent implements OnInit {
   }
 
    /**
-   * update groups after adding user to show new users iin the group
+   * update groups after adding user to show new users iin the group or after delete group
    * @param groups list of groups to update 
    * @param user  the nez user to add
    */
@@ -79,7 +79,7 @@ export class GroupsComponent implements OnInit {
       }  
         this.userService.updateUser(user).subscribe({
           next: (v) => {
-            console.log('updating group ' + v);
+            console.log('updating user ' + v);
           },
           error: (e) => console.error('error occur during update group ' + e),
           complete: () => console.info('update user complete')
