@@ -1,4 +1,3 @@
-
 <mat-toolbar class="content" color="accent" fxLayout="row" fxLayoutAlign="space-between center">
     <button mat-button color="primary" (click)="goUsers()">
         <mat-icon color="primary">keyboard_arrow_left</mat-icon>
@@ -30,8 +29,8 @@
             <ng-container *ngIf="(groups$ | async) as groups; else nogroups">
                 <mat-form-field>
                     <mat-label>Groups</mat-label>
-                    <mat-select #select multiple formControlName="groups"  >
-                        <mat-option *ngFor="let group of groups" [value]="group.groupName" name="select" >
+                    <mat-select #select multiple formControlName="groups">
+                        <mat-option *ngFor="let group of groups" [value]="group.groupName" name="select">
                             {{group.groupName}}
                         </mat-option>
                     </mat-select>
@@ -41,14 +40,13 @@
                 <div class="loaing-container">
                     <h3>Add group and come back to add user</h3>
                 </div>
-            </ng-template> 
+            </ng-template>
         </div>
         <div fxFlex="100%">
             <button mat-stroked-button color="primary" type="submit" [disabled]="!userForm.valid">
                 {{btnText}}
             </button>
         </div>
-
     </div>
 </form>
 
