@@ -15,7 +15,7 @@ End : to run in full local mode
 
 
 ###############################################################################
-End : to run with ng serve 
+Start : to run with ng serve 
 ###############################################################################
 
 # InternationsFrontend
