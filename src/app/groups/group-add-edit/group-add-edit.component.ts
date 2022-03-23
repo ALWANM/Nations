@@ -69,8 +69,6 @@ export class GroupAddEditComponent implements OnInit {
     this.groupToAdd.users = [...this.usersOfGroupToAdd];
     this.groupForm.get('users').value.forEach(userSelected => {
       if (userSelected != "") {
-        //console.log(' User ', userSelected);
-        //this.groupToAdd.users.push(userSelected.groups.users);
         var indexToDelete = this.groupToAdd.users.findIndex(x => x.userid == userSelected.userid);
         if (indexToDelete == -1) {
           this.groupToAdd.users.push(userSelected);

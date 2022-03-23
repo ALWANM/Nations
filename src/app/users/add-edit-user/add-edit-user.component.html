@@ -30,7 +30,7 @@
                 <mat-form-field>
                     <mat-label>Groups</mat-label>
                     <mat-select #select multiple formControlName="groups">
-                        <mat-option *ngFor="let group of groups" [value]="group.groupName" name="select">
+                        <mat-option *ngFor="let group of groups" [value]="group" name="select">
                             {{group.groupName}}
                         </mat-option>
                     </mat-select>

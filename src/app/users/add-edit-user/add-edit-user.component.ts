@@ -76,33 +76,21 @@ export class AddEditUserComponent implements OnInit {
     this.userToAdd.lastName = this.userForm.value.lastname;
     this.userToAdd.email = this.userForm.value.email;
     this.userToAdd.groups = [...this.groupsOfUserToAdd];
-    this.userForm.get('groups').value.forEach(groupSelectedName => {
-      if (groupSelectedName != "") {
-        console.log(' group ', groupSelectedName)
-        let group2 = new Group();
-        // this.groups$.pipe(
-        //   map(item => item.find(x => x.groupName == groupSelectedName)))
-        //   .subscribe({
-        //     next: (group) => {
-        //       //this.userToAdd.groups.push(group);
-        //      // this.groupFoundInList = group;
-        //       console.log('group found ',  this.groupFoundInList);
-        //       group2.groupid = group.groupid;
-        //     },
-        //     error: (e) => console.error('error occur during searching group in list  '),
-        //     complete: () => console.info('searching the group in list complete')
-        //   });
-        group2.groupName = groupSelectedName;
-        group2.users = [this.userToAdd];
-        this.userToAdd.groups.push(group2);
+    this.userForm.get('groups').value.forEach(groupSelected => {
+      if (groupSelected != "") {
+        var indexToDelete = this.userToAdd.groups.findIndex(x => x.groupid == groupSelected.groupid);
+        if (indexToDelete == -1) {
+          this.userToAdd.groups.push(groupSelected);
+        }
       }
     });
     if (this.btnText == 'Add') {
-      this.addUser(this.userToAdd);
       this.updateGroups(this.userToAdd.groups, this.userToAdd);
+      this.addUser(this.userToAdd);
     }
     else {
-      this.userToAdd.userid = this.userIdToEdit;
+      this.userToAdd.userid = this.userIdToEdit; 
+      this.updateGroups(this.userToAdd.groups, this.userToAdd);
       this.updateUser(this.userToAdd);
     }
   }

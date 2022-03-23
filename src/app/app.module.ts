@@ -23,10 +23,10 @@ const dbConfig: DBConfig = {
     store: 'users',
     storeConfig: { keyPath: 'userid',keypath: 'userid', autoIncrement: true },
     storeSchema: [
-      { name: 'firstname', keypath: 'firstName', options: { unique: false } },
-      { name: 'lastname', keypath: 'lastName', options: { unique: false } },
       { name: 'email', keypath: 'email', options: { unique: true } },
-      { name: 'groups', keypath: 'groups', options: { unique: true } }
+      { name: 'groups', keypath: 'groups', options: { unique: true } },
+      { name: 'firstname', keypath: 'firstName', options: { unique: false } },
+      { name: 'lastname', keypath: 'lastName', options: { unique: false } }
     ]
   }, {
     // group table
