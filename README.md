@@ -1,3 +1,11 @@
+Important Informations
+The dist File ine this branch is not the same for the code. to see the lastest Code you can see the Branch 'New features' there new code and same Dist.
+The new dist include: 
+1 - Delete group from user.
+2 - Delete user from group.
+3 - Delete user if it doesn't have any more user.
+4 - Delete groups if it doesn't have any more user
+
 ###############################################################################
 Start : to run in full local mode 
 ###############################################################################
