@@ -1,4 +1,4 @@
-<mat-toolbar class="content" color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar class="content" style="background-color: #F5F6F7;" color="accent" fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutAlign="start center">
 
     </div>
@@ -10,7 +10,7 @@
 
 <div class="content" fxLayoutGap="16px grid">
     <ng-container *ngIf="(users$ | async) as users; else loading">
-        <div fxLayout="row wrap" fxLayout.lt-lg=" row wrap" fxLayoutGap="16px grid">
+        <div fxLayout="row wrap" fxLayout.lt-lg=" row wrap"  fxLayoutGap="16px grid">
             <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let user of users">
                 <mat-card class="mat-elevation-z4">
                     <mat-card-header>
@@ -28,8 +28,9 @@
                     <mat-card-content>
                         <div class="scrollable">
                             <mat-chip-list #chipList FormArrayName="Groups">
-                                <mat-chip *ngFor="let group of user.groups" removable="false">
-                                    {{ group.groupName }}
+                                <mat-chip *ngFor="let group of user.groups" [removable]="removable" selectable="true">
+                                    {{ group.groupName}}
+                                    <mat-icon matChipRemove *ngIf="removable"  (click)="removeGroupFromUser(group,user)" >cancel</mat-icon>
                                 </mat-chip>
                             </mat-chip-list>
                         </div>

@@ -1,4 +1,4 @@
-<mat-toolbar class="content" color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar class="content" color="accent" style="background-color: #F5F6F7;" fxLayout="row" fxLayoutAlign="space-between center">
     <div fxLayout="row" fxLayoutAlign="start center">
 
     </div>
@@ -25,8 +25,9 @@
                     <mat-card-content>
                         <div class="scrollable">
                             <mat-chip-list #chipList FormArrayName="Groups">
-                                <mat-chip *ngFor="let user of group.users" removable="false">
+                                <mat-chip *ngFor="let user of group.users" [removable]="removable" >
                                     {{ user.firstName }} {{ user.lastName }}
+                                    <mat-icon matChipRemove *ngIf="removable"  (click)="removeUserFromGroup(user,group)" >cancel</mat-icon>
                                 </mat-chip>
                             </mat-chip-list>
                         </div>
