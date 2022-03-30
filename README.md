@@ -1,5 +1,5 @@
 Important Informations
-The dist File ine this branch is not the same for the code. to see the lastest Code you can see the Branch 'New features' there new code and same Dist.
+The dist File in this branch is not the same for the code. to see the latest Code you can see the Branch 'New features' there are new code and same Dist.
 The new dist include: 
 1 - Delete group from user.
 2 - Delete user from group.
