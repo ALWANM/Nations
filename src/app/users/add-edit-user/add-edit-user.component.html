@@ -1,0 +1,61 @@
+<mat-toolbar class="content" style="background-color: #F5F6F7;" fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="primary" (click)="goUsers()">
+        <mat-icon color="primary">keyboard_arrow_left</mat-icon>
+        Back
+    </button>
+</mat-toolbar>
+<mat-card class="container" style="background-color:#1f70a1; color: #F5F6F7;">
+    <mat-card-header>
+        <mat-card-title>User informations</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px grid">
+                <div fxFlex="100%">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstname" placeholder="Firstname" name="firstname" required>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100%">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastname" name="lastname" required>
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100%">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" name="email" required type="email">
+                    </mat-form-field>
+                </div>
+                <div fxFlex="100%">
+                    <ng-container *ngIf="(groups$ | async) as groups; else nogroups">
+                        <mat-form-field>
+                            <mat-label>Groups</mat-label>
+                            <mat-select #select multiple formControlName="groups">
+                                <mat-option *ngFor="let group of groups" [value]="group" name="select">
+                                    {{group.groupName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </ng-container>
+                    <ng-template #nogroups>
+                        <div class="loaing-container"> 
+                        </div>
+                    </ng-template>
+                </div>
+                <div fxFlex="100%">
+                    <button mat-stroked-button color="primary" type="submit" [disabled]="!userForm.valid">
+                        {{btnText}}
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <ng-template #loading>
+            <div class="loaing-container">
+                <h3>findind users ....</h3>
+            </div>
+        </ng-template>
+    </mat-card-content>

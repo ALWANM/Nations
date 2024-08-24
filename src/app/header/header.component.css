@@ -1,0 +1,9 @@
+p {
+    font-family: Lato;
+  }
+.navbar-light .navbar-nav .nav-link {
+    color: #1f70a1;
+}
+.navbar-light .navbar-brand {
+    color: #1c80c8;
+}

@@ -1,0 +1,53 @@
+<mat-toolbar class="content" color="accent" style="background-color: #F5F6F7;" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+    </div>
+    <button mat-button color="primary" (click)="goAddGroup()">
+        <mat-icon color="primary">add</mat-icon>
+        Add
+    </button>
+</mat-toolbar>
+
+<div class="content" fxLayoutGap="16px grid">
+    <ng-container *ngIf="(groups$ | async) as groups; else loading">
+        <div fxLayout="row wrap" fxLayout.lt-lg=" row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let group of groups">
+                <mat-card class="mat-elevation-z4">
+                    <mat-card-header>
+                        <mat-card-title>{{group.groupName}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="../../assets/img/pngwing.png">
+                    <mat-card-content>
+                        <mat-label>
+                            Groups members
+                        </mat-label><br />
+                    </mat-card-content>
+                    <mat-card-content>
+                        <div class="scrollable">
+                            <mat-chip-list #chipList FormArrayName="Groups">
+                                <mat-chip *ngFor="let user of group.users" [removable]="removable" >
+                                    {{ user.firstName }} {{ user.lastName }}
+                                    <mat-icon matChipRemove *ngIf="removable"  (click)="removeUserFromGroup(user,group)" >cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button color="primary" (click)="goEditGroup(group.groupid)">
+                            <mat-icon color="accent">edit</mat-icon>EDIT
+                        </button>
+                        <button mat-button color="primary" (click)="deleteGroup(group)">
+                            <mat-icon color="accent">delete</mat-icon>DELETE
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #loading>
+    <div class="loaing-container">
+        <h3>findind Groups ....</h3>
+    </div>
+</ng-template>

@@ -1,0 +1,30 @@
+.mat-card {
+    background: #fafafa;
+    color: #1f70a1;
+}
+
+.mat-table {
+    background: #e5e6ec;
+    color: black;
+}
+
+.mat-cell, .mat-footer-cell {
+    color: rgb(7, 7, 7);
+}
+
+.mat-header-cell {
+    color: rgba(12, 12, 12, 0.7);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.scrollable {
+    width: auto;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
